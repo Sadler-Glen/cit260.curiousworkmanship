@@ -18,6 +18,7 @@ public class Player implements Serializable{
     // class instance variables
     private String name;
     private double bestTime;
+    private ArrayList<Game> games = new ArrayList<Game>();
 
     public Player() {
     }
@@ -38,6 +39,14 @@ public class Player implements Serializable{
         this.bestTime = bestTime;
     }
 
+    public ArrayList<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(ArrayList<Game> games) {
+        this.games = games;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
