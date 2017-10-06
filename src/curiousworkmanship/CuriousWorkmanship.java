@@ -5,6 +5,8 @@
  */
 package curiousworkmanship;
 
+import byui.cit260.curiousWorkmanship.model.Actor;
+import byui.cit260.curiousWorkmanship.model.Game;
 import byui.cit260.curiousWorkmanship.model.Player;
 
 /**
@@ -19,6 +21,13 @@ public class CuriousWorkmanship {
     public static void main(String[] args) {
         
         Player playerOne = new Player();
+        System.out.println(playerOne);
+        
+        Game gameOne = new Game();
+        System.out.println(gameOne);
+        
+        //Actor actorOne = new Actor();
+        //System.out.println(actorOne);
         
         playerOne.setName("Fred Flintstone");
         playerOne.setBestTime(7.00);

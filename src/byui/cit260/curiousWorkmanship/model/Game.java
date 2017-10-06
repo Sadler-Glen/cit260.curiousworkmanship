@@ -6,6 +6,7 @@
 package byui.cit260.curiousWorkmanship.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,11 +17,20 @@ public class Game implements Serializable{
     // class instance variables
     private double totalTime;
     private int noPeople;
-    private Player player;
+    private Player player; // 1 and only 1 relationship
+    private ArrayList<Actor> actors = new ArrayList<Actor>();
 
     public Game() {
     }
 
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+    
     public Player getPlayer() {
         return player;
     }

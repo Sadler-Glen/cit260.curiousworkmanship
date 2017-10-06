@@ -18,9 +18,18 @@ public class Player implements Serializable{
     // class instance variables
     private String name;
     private double bestTime;
-    private ArrayList<Game> games = new ArrayList<Game>();
+    private ArrayList<Game> games = new ArrayList<Game>(); // 1..* relationship
+    private Actor actor;
 
     public Player() {
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
     }
     
     public String getName() {

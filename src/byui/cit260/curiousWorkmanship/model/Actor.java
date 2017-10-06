@@ -6,6 +6,7 @@
 package byui.cit260.curiousWorkmanship.model;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,6 +26,8 @@ public enum Actor {
     private String name;
     private String description;
     private Point coordinates;
+    private Game game;
+    private ArrayList<Player> players = new ArrayList<Player>();
 
     Actor(String name, String description, Point coordinates) {
         this.name = name;
@@ -33,6 +36,22 @@ public enum Actor {
      
     }
 
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+    
     public String getName() {
         return name;
     }
