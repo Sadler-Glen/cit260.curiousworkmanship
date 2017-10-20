@@ -12,7 +12,7 @@ package byui.cit260.curiousWorkmanship.control;
 public class InventoryControl {
 
     public double calcVolumeOfBarrel(double height, double diameter){
-    
+        
         if(height < 0) { // height is negative?
             return -1;
         }

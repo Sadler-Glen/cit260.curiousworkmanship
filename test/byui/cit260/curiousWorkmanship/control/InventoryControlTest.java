@@ -117,7 +117,7 @@ public class InventoryControlTest {
         result = instance.calcVolumeOfBarrel(height, diameter);
         
         // compare expected retrun value with actual value returned
-        assertEquals(expResult, result, 0.0001); 
+        assertEquals(expResult, result, 0.0); 
         
         /*********************************
          * Test case #6
