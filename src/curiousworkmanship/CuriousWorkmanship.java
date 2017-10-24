@@ -5,37 +5,42 @@
  */
 package curiousworkmanship;
 
-import byui.cit260.curiousWorkmanship.model.Actor;
 import byui.cit260.curiousWorkmanship.model.Game;
 import byui.cit260.curiousWorkmanship.model.Player;
+import byui.cit260.curiousWorkmanship.view.StartProgramView;
 
 /**
  *
  * @author sadss
  */
 public class CuriousWorkmanship {
-
+    
+    private static Game currentGame = null;
+    private static Player player = null;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Player playerOne = new Player();
-        System.out.println(playerOne);
-        
-        Game gameOne = new Game();
-        System.out.println(gameOne);
-        
-        //Actor actorOne = new Actor();
-        //System.out.println(actorOne);
-        
-        playerOne.setName("Fred Flintstone");
-        playerOne.setBestTime(7.00);
-        
-        String playerOneName = playerOne.getName();
-        double playerOneTime = playerOne.getBestTime();
-        
-        System.out.println("Name = " + playerOneName + ", time = " + playerOneTime);
+        //create StartProgramViewOrig and display the start program view
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
+    }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        CuriousWorkmanship.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        CuriousWorkmanship.player = player;
     }
     
 }
