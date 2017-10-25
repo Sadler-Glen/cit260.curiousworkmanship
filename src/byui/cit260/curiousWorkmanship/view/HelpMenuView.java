@@ -5,40 +5,33 @@
  */
 package byui.cit260.curiousWorkmanship.view;
 
-import byui.cit260.curiousWorkmanship.control.GameControl;
 import java.util.Scanner;
-import byui.cit260.curiousWorkmanship.view.GameMenuView;
-import curiousworkmanship.CuriousWorkmanship;
 
 /**
  *
  * @author sadss
  */
-public class MainMenuView {
+public class HelpMenuView {
 
     private String menu;
     private String promptMessage;
-
-    public MainMenuView() {
+    
+    public HelpMenuView() {
         this.menu =  "\n----------------------------------------------"
-                    +"\n| Main Menu                                  |"
+                    +"\n| Help Menu                                  |"
                     +"\n----------------------------------------------"
-                    +"\nN - Start new Game"
-                    +"\nG - Get and start saved game"
-                    +"\nH - Get help on how to play the game"
-                    +"\nS - Save game"
+                    +"\nG - What is the goal of the game?"
+                    +"\nM - How to move"
+                    +"\nE - Estiating the amount of resources"
+                    +"\nH - Harvesting resources"
                     +"\nQ - Quit"
                     +"\n----------------------------------------------";
                                 
         this.promptMessage = "\nPlease enter your choice: ";       
     }
-    
-        /**
-         * displays the start program view
-         */
-        public void displayMainMenuView(){  
 
-        boolean done = false; // set flag to not done
+    void displayHelpMenuView() {
+                boolean done = false; // set flag to not done
         do{
             // prompt for and get menu option
             String menuOption = this.getMenuOption();
@@ -50,7 +43,6 @@ public class MainMenuView {
         
         } while(!done);
     }
-
     private String getMenuOption() {
         
         Scanner keyboard = new Scanner(System.in); //get infile for keyboard
@@ -79,45 +71,36 @@ public class MainMenuView {
         menuOption = menuOption.toUpperCase(); // covert choice to upper case
         
         switch (menuOption){
-            case "N": // create and start a new game
-                this.startNewGame();
+            case "G": // create and start a new game
+                System.out.println("\n========================================"
+                                  +"\nWhat is the goal of the Game? "
+                                  +"\n========================================");
                 break;
-            case "G": // get and start an existing game
-                this.startExistingGame();
+            case "M": // how to move
+                System.out.println("\n========================================"
+                                  +"\nHow do I move? "
+                                  +"\n========================================");
                 break;
-            case "H": // display the help menu
-                this.displayHelpMenu();
+            case "E": // estimate resources
+                System.out.println("\n========================================"
+                                  +"\nEstimating the amount of resources "
+                                  +"\n========================================");
                 break;
-            case "S": // save the current game
-                this.saveGame();
+            case "H": // Harvest resources
+                System.out.println("\n========================================"
+                                  +"\nHarvesting resources "
+                                  +"\n========================================");
                 break;
+            case "D": // Delivering Resources
+                System.out.println("\n========================================"
+                                  +"\nDelivering resources "
+                                  +"\n========================================");
+                break;
+            
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
         }
-        return true;
+        return false;
     }
-
-    private void startNewGame() {
-        // create a new game
-        GameControl.createNewGame(CuriousWorkmanship.getPlayer());
-        
-        // display the game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-    }
-
-    private void startExistingGame() {
-        System.out.println("\n*** startExistingGame() called ***");
-    }
-
-    private void displayHelpMenu() {
-        // display the help menu
-        HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
-    }
-
-    private void saveGame() {
-        System.out.println("\n*** saveGame() called ***");
-    }
+    
 }
-

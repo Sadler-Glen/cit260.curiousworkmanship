@@ -24,7 +24,11 @@ public class GameControl {
         player.setName(name);
         
         CuriousWorkmanship.setPlayer(player); // save the player
+        
         return player;
     }
-    
+    public static void createNewGame(Player player){
+        System.out.println("\n*** createNewGame() called ***");
+                
+    }
 }

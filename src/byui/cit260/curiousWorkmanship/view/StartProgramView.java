@@ -28,14 +28,14 @@ public class StartProgramView {
             do requested action and display next view
         while the view is not done
         */
-        boolean done = false; // set glag as not done;
+        boolean done = false; // set flag as not done;
         do{
             // prompt for and get players name
             String playersName = this.getPlayersName();
             if(playersName.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit game
             
-            // do the requested action and dispaly the next view
+            // do the requested action and display the next view
             done = this.doAction(playersName);
         } while (!done);
     }
@@ -96,11 +96,11 @@ public class StartProgramView {
         ENDWHILE
         RETURN name
         */
-        Scanner keyboard = new Scanner(System.in); // get infile fro keyboard
+        Scanner keyboard = new Scanner(System.in); // get infile from keyboard
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
         
-        while(!valid){ // loop while an invalid vale is entered
+        while(!valid){ // loop while an invalid value is entered
             System.out.println("\n" + this.promptMessage);
             
             value = keyboard.nextLine(); // get next line typed on the keyboard
@@ -137,8 +137,8 @@ public class StartProgramView {
         // call createPlayer() control function
         Player player = GameControl.createPlayer(playersName);
         
-        if(player == null){ // if unsucessful
-            System.out.println("\nError creating the player,");
+        if(player == null){ // if unsuccessful
+            System.out.println("\nError creating the player.");
             return false;    
         }
         // display next view
