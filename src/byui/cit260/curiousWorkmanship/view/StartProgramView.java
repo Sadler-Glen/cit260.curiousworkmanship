@@ -15,31 +15,6 @@ import java.util.Scanner;
  */
 public class StartProgramView {
     
-    /**
-     * displays the start program view
-     */
-
-    public void displayStartProgramView() {
-        /*
-        do
-            prompt for and get playersName
-            If playersName == 'Q' then
-                return
-            do requested action and display next view
-        while the view is not done
-        */
-        boolean done = false; // set flag as not done;
-        do{
-            // prompt for and get players name
-            String playersName = this.getPlayersName();
-            if(playersName.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit game
-            
-            // do the requested action and display the next view
-            done = this.doAction(playersName);
-        } while (!done);
-    }
-    
     private String promptMessage;
     
     public StartProgramView(){
@@ -77,6 +52,30 @@ public class StartProgramView {
                 + "\n*                                           *"
                 + "\n*********************************************"
                 );
+    }
+    /**
+     * displays the start program view
+     */
+
+    public void displayStartProgramView() {
+        /*
+        do
+            prompt for and get playersName
+            If playersName == 'Q' then
+                return
+            do requested action and display next view
+        while the view is not done
+        */
+        boolean done = false; // set flag as not done;
+        do{
+            // prompt for and get players name
+            String playersName = this.getPlayersName();
+            if(playersName.toUpperCase().equals("Q")) // user wants to quit
+                return; // exit game
+            
+            // do the requested action and display the next view
+            done = this.doAction(playersName);
+        } while (!done);
     }
 
     private String getPlayersName() {

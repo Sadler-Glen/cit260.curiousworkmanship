@@ -13,8 +13,8 @@ import java.util.Scanner;
  */
 public class HelpMenuView {
 
-    private String menu;
-    private String promptMessage;
+    private final String menu;
+    private final String promptMessage;
     
     public HelpMenuView() {
         this.menu =  "\n----------------------------------------------"
@@ -22,21 +22,21 @@ public class HelpMenuView {
                     +"\n----------------------------------------------"
                     +"\nG - What is the goal of the game?"
                     +"\nM - How to move"
-                    +"\nE - Estiating the amount of resources"
+                    +"\nE - Estimating the amount of resources"
                     +"\nH - Harvesting resources"
-                    +"\nQ - Quit"
+                    +"\nX - Exit"
                     +"\n----------------------------------------------";
                                 
         this.promptMessage = "\nPlease enter your choice: ";       
     }
 
-    void displayHelpMenuView() {
+    void displayHelpMenu() {
                 boolean done = false; // set flag to not done
         do{
             // prompt for and get menu option
             String menuOption = this.getMenuOption();
-            if(menuOption.toUpperCase().equals("Q"))// user wants to quit
-                    return; // exit game
+            if(menuOption.toUpperCase().equals("X"))// user wants to return to main menu
+                    return; // return to main menu
                             
             // do the requested action and display the next view
             done = this.doAction(menuOption);
@@ -75,6 +75,7 @@ public class HelpMenuView {
                 System.out.println("\n========================================"
                                   +"\nWhat is the goal of the Game? "
                                   +"\n========================================");
+                
                 break;
             case "M": // how to move
                 System.out.println("\n========================================"
@@ -96,11 +97,17 @@ public class HelpMenuView {
                                   +"\nDelivering resources "
                                   +"\n========================================");
                 break;
-            
+            case "Q": // Return to Main Menu
+                System.out.println("\n*** Return to Main Menu called***");
+                // Create MainMenuView object
+                //MainMenuView mainMenuView = new MainMenuView();
+
+                // Display the main menu view
+                //mainMenuView.displayMainMenuView();
+                //return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
         }
         return false;
     }
-    
 }

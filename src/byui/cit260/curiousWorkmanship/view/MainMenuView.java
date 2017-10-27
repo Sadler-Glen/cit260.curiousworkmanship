@@ -93,8 +93,9 @@ public class MainMenuView {
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
+                break;
         }
-        return true;
+        return false;
     }
 
     private void startNewGame() {
@@ -112,8 +113,8 @@ public class MainMenuView {
 
     private void displayHelpMenu() {
         // display the help menu
-        HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayHelpMenu();
     }
 
     private void saveGame() {
