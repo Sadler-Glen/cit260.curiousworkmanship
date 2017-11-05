@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package byui.cit260.curiousWorkmanship.view;
 
 import byui.cit260.curiousWorkmanship.control.GameControl;
@@ -58,14 +53,7 @@ public class StartProgramView {
      */
 
     public void displayStartProgramView() {
-        /*
-        do
-            prompt for and get playersName
-            If playersName == 'Q' then
-                return
-            do requested action and display next view
-        while the view is not done
-        */
+
         boolean done = false; // set flag as not done;
         do{
             // prompt for and get players name
@@ -79,22 +67,7 @@ public class StartProgramView {
     }
 
     private String getPlayersName() {
-        /*
-        WHILE valid value has not been entered
-            DISPLAY promptMessage
-            GET the value entered from the keyboard
-            Trim front and trailing blanks off the name
-        
-            IF The length of the value is blank THEN
-                DISPLAY "Invalid value: The value cannot be blank"
-                CONTINUE
-            ENDIF
-        
-            BREAK
-        
-        ENDWHILE
-        RETURN name
-        */
+
         Scanner keyboard = new Scanner(System.in); // get infile from keyboard
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
@@ -116,17 +89,6 @@ public class StartProgramView {
 
     private boolean doAction(String playersName) {
         
-        /*  If the length of the playersName < 2 THEN
-                DISPLAY "Invalid name: The name must be > 1 character"
-                    return false
-            Create player with specufied name
-            if unsuccessful THEN
-                DISPLAY "Invalid name: The name is too short"
-                    return false
-            DISPLAY customize welcome message
-            display mainMenuView
-            return true
-        */ 
         if(playersName.length() < 2){
             System.out.println("\nInvalid players name: "
                     + "The name must be greater than one character in length");
