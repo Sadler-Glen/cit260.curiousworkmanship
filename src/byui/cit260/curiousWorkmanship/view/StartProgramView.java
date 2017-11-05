@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class StartProgramView {
     
-    private String promptMessage;
+    private final String promptMessage;
     
     public StartProgramView(){
         // promptMessage = "Please enter your name
