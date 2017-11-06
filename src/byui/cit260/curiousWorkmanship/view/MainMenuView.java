@@ -25,7 +25,8 @@ public class MainMenuView extends View {
             + "\nH - Get help on how to play the game"
             + "\nS - Save game"
             + "\nQ - Quit"
-            + "\n----------------------------------------------");
+            + "\n----------------------------------------------"
+            ,"\nPlease enter your choice:");
     }                            
 
     @Override
@@ -69,7 +70,7 @@ public class MainMenuView extends View {
     private void displayHelpMenu() {
         // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenu();
+        helpMenu.display();
     }
 
     private void saveGame() {

@@ -14,12 +14,15 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface {
     
     protected String displayMessage;
+    protected String displayPrompt;
     
     public View(){
     }
     
-    public View(String message){
+    public View(String message, String prompt){
         this.displayMessage = message;
+        this.displayPrompt = prompt;
+        
     }
     
     @Override
@@ -31,8 +34,9 @@ public abstract class View implements ViewInterface {
             String value = this.getInput();
             if(value.toUpperCase().equals("Q"))// user wants to quit
                 return; // exit game
-                            
+            if(value.toUpperCase().equals("X"))// user wants to exit view                
             // do the requested action and display the next view
+                return; // exit view
             done = this.doAction(value);
         
         } while(!done);
@@ -50,6 +54,7 @@ public abstract class View implements ViewInterface {
             
             // prompt for input
             System.out.println(" " + this.displayMessage);
+            System.out.println(" " + this.displayPrompt);
             
             // get th value entered from keyboard
             value = keyboard.nextLine();

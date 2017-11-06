@@ -11,66 +11,27 @@ import java.util.Scanner;
  *
  * @author sadss
  */
-public class HelpMenuView {
+public class HelpMenuView extends View {
 
-    private final String menu;
-    private final String promptMessage;
     
     public HelpMenuView() {
-        this.menu =  "\n----------------------------------------------"
-                    +"\n| Help Menu                                  |"
-                    +"\n----------------------------------------------"
-                    +"\nG - What is the goal of the game?"
-                    +"\nM - How to move"
-                    +"\nE - Estimating the amount of resources"
-                    +"\nH - Harvesting resources"
-                    +"\nX - Exit"
-                    +"\n----------------------------------------------";
-                                
-        this.promptMessage = "\nPlease enter your choice: ";       
+        super (  "\n----------------------------------------------"
+                +"\n| Help Menu                                  |"
+                +"\n----------------------------------------------"
+                +"\nG - What is the goal of the game?"
+                +"\nM - How to move"
+                +"\nE - Estimating the amount of resources"
+                +"\nH - Harvesting resources"
+                +"\nX - Exit"
+                +"\n----------------------------------------------"
+                + "","Please enter your choice: " );     
     }
 
-    void displayHelpMenu() {
-        boolean done = false; // set flag to not done
-        do{
-            // prompt for and get menu option
-            String menuOption = this.getMenuOption();
-            if(menuOption.toUpperCase().equals("X"))// user wants to return to main menu
-                    return; // return to main menu
-                            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
+    public boolean doAction(String value) {
         
-        } while(!done);
-    }
-    private String getMenuOption() {
+        value = value.toUpperCase(); // covert choice to upper case
         
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while(!valid) { // loop while an invalid value is entered
-            System.out.println(this.menu);
-            System.out.println(" " + this.promptMessage);
-            
-            
-            value = keyboard.nextLine(); // get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-            
-            if(value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            break; // end the loop
-        }
-        
-        return value; // return the value entered
-    }
-    private boolean doAction(String menuOption) {
-        
-        menuOption = menuOption.toUpperCase(); // covert choice to upper case
-        
-        switch (menuOption){
+        switch (value){
             case "G": // create and start a new game
                 System.out.println("\n========================================"
                                   +"\nWhat is the goal of the Game? "
