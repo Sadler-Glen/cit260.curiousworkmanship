@@ -14,71 +14,26 @@ import curiousworkmanship.CuriousWorkmanship;
  *
  * @author sadss
  */
-public class MainMenuView {
+public class MainMenuView extends View {
 
-    private String menu;
-    private String promptMessage;
+    public MainMenuView(){
+        super("\n----------------------------------------------"
+            + "\n| Main Menu                                  |"
+            + "\n----------------------------------------------"
+            + "\nN - Start new Game"
+            + "\nG - Get and start saved game"
+            + "\nH - Get help on how to play the game"
+            + "\nS - Save game"
+            + "\nQ - Quit"
+            + "\n----------------------------------------------");
+    }                            
 
-    public MainMenuView() {
-        this.menu =  "\n----------------------------------------------"
-                    +"\n| Main Menu                                  |"
-                    +"\n----------------------------------------------"
-                    +"\nN - Start new Game"
-                    +"\nG - Get and start saved game"
-                    +"\nH - Get help on how to play the game"
-                    +"\nS - Save game"
-                    +"\nQ - Quit"
-                    +"\n----------------------------------------------";
-                                
-        this.promptMessage = "\nPlease enter your choice: ";       
-    }
-    
-        /**
-         * displays the start program view
-         */
-        public void displayMainMenuView(){  
-
-        boolean done = false; // set flag to not done
-        do{
-            // prompt for and get menu option
-            String menuOption = this.getMenuOption();
-            if(menuOption.toUpperCase().equals("Q"))// user wants to quit
-                    return; // exit game
-                            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
+    @Override
+    public boolean doAction(String value) {
         
-        } while(!done);
-    }
-
-    private String getMenuOption() {
+        value = value.toUpperCase(); // covert choice to upper case
         
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while(!valid) { // loop while an invalid value is entered
-            System.out.println(this.menu);
-            System.out.println(" " + this.promptMessage);
-            
-            
-            value = keyboard.nextLine(); // get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-            
-            if(value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            break; // end the loop
-        }
-        
-        return value; // return the value entered
-    }
-    private boolean doAction(String menuOption) {
-        
-        menuOption = menuOption.toUpperCase(); // covert choice to upper case
-        
-        switch (menuOption){
+        switch (value){
             case "N": // create and start a new game
                 this.startNewGame();
                 break;
