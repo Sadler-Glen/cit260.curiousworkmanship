@@ -31,7 +31,7 @@ public class HelpMenuView {
     }
 
     void displayHelpMenu() {
-                boolean done = false; // set flag to not done
+        boolean done = false; // set flag to not done
         do{
             // prompt for and get menu option
             String menuOption = this.getMenuOption();
