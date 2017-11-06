@@ -24,7 +24,7 @@ public class StartProgramView {
         System.out.println(""
                 + "\n*********************************************"
                 + "\n*                                           *"
-                + "\n* This is the game of Curious Workmaship    *"
+                + "\n* This is the game of Curious Workmanship   *"
                 + "\n* In this game you will help Nephi build a  *"
                 + "\n* ship of curious workmanship to travel to  *"
                 + "\n* the promised land.                        *"
@@ -118,6 +118,6 @@ public class StartProgramView {
         MainMenuView mainMenuView = new MainMenuView();
                 
         // Display the main menu view
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
     }
 }
