@@ -24,7 +24,7 @@ public class HelpMenuView extends View {
                 +"\nH - Harvesting resources"
                 +"\nX - Exit"
                 +"\n----------------------------------------------"
-                + "","Please enter your choice: " );     
+                ,"\nPlease enter your choice: " );     
     }
 
     public boolean doAction(String value) {
