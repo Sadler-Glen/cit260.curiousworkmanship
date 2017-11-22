@@ -6,32 +6,25 @@
 package byui.cit260.curiousWorkmanship.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**
  *
- * @author sadss
+ * @author jacksonrkj
  */
-public class Player implements Serializable{
+public class Player implements Serializable {
     
-    // class instance variables
     private String name;
-    private double bestTime;
-    private ArrayList<Game> games = new ArrayList<Game>(); // 1..* relationship
-    private Actor actor;
+    private double time;
 
     public Player() {
     }
 
-    public Actor getActor() {
-        return actor;
+    public Player(String name, double time) {
+        this.name = name;
+        this.time = time;
     }
 
-    public void setActor(Actor actor) {
-        this.actor = actor;
-    }
-    
     public String getName() {
         return name;
     }
@@ -40,41 +33,29 @@ public class Player implements Serializable{
         this.name = name;
     }
 
-    public double getBestTime() {
-        return bestTime;
+    public double getTime() {
+        return time;
     }
 
-    public void setBestTime(double bestTime) {
-        this.bestTime = bestTime;
-    }
-
-    public ArrayList<Game> getGames() {
-        return games;
-    }
-
-    public void setGames(ArrayList<Game> games) {
-        this.games = games;
-    }
-    
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 61 * hash + Objects.hashCode(this.name);
-        hash = 61 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
-        return hash;
+    public void setTime(double time) {
+        this.time = time;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", bestTime=" + bestTime + '}';
+        return "Player{" + "name=" + name + ", time=" + time + '}';
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.name);
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.time) ^ (Double.doubleToLongBits(this.time) >>> 32));
+        return hash;
+    }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -82,15 +63,15 @@ public class Player implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
-        if (Double.doubleToLongBits(this.bestTime) != Double.doubleToLongBits(other.bestTime)) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (Double.doubleToLongBits(this.time) != Double.doubleToLongBits(other.time)) {
             return false;
         }
         return true;
     }
-
+    
     
     
 }

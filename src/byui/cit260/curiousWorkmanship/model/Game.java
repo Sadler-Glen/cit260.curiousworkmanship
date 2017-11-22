@@ -6,37 +6,26 @@
 package byui.cit260.curiousWorkmanship.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
- * @author sadss
+ * @author jacksonrkj
  */
-public class Game implements Serializable{
 
-    // class instance variables
+public class Game implements Serializable {
+    
     private double totalTime;
-    private int noPeople;
-    private Player player; // 1 and only 1 relationship
-    private ArrayList<Actor> actors = new ArrayList<Actor>();
+   
+    private Player player;
+    private InventoryItem[] inventory; 
+    private Wagon wagon;
+    private Ship ship;
+    private Map map;
+   
+    
 
     public Game() {
-    }
-
-    public ArrayList<Actor> getActors() {
-        return actors;
-    }
-
-    public void setActors(ArrayList<Actor> actors) {
-        this.actors = actors;
-    }
-    
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
+        this.totalTime = 0;
     }
 
     public double getTotalTime() {
@@ -47,47 +36,52 @@ public class Game implements Serializable{
         this.totalTime = totalTime;
     }
 
-    public int getNoPeople() {
-        return noPeople;
+    public Ship getShip() {
+        return ship;
     }
 
-    public void setNoPeople(int noPeople) {
-        this.noPeople = noPeople;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 11 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
-        hash = 11 * hash + this.noPeople;
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "Game{" + "totalTime=" + totalTime + ", noPeople=" + noPeople + '}';
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Game other = (Game) obj;
-        if (Double.doubleToLongBits(this.totalTime) != Double.doubleToLongBits(other.totalTime)) {
-            return false;
-        }
-        if (this.noPeople != other.noPeople) {
-            return false;
-        }
-        return true;
+    public void setShip(Ship ship) {
+        this.ship = ship;
     }
     
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+
+    public Wagon getWagon() {
+        return wagon;
+    }
+
+    public void setWagon(Wagon wagon) {
+        this.wagon = wagon;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "Game{" + "totalTime=" + totalTime + ", player=" + player.toString() + '}';
+    }
+   
     
 }

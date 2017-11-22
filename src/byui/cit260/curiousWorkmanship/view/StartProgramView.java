@@ -1,123 +1,85 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package byui.cit260.curiousWorkmanship.view;
 
-import byui.cit260.curiousWorkmanship.control.GameControl;
+import byui.cit260.curiousWorkmanship.control.ProgramControl;
 import byui.cit260.curiousWorkmanship.model.Player;
 import java.util.Scanner;
 
-/**
- *
- * @author sadss
- */
-public class StartProgramView {
-    
-    private final String promptMessage;
-    
-    public StartProgramView(){
-        // promptMessage = "Please enter your name
-        this.promptMessage = "\nPlease enter your name: ";
-        // display banner when view is created
-        this.displayBanner();
+public class StartProgramView extends View {
+
+    public StartProgramView() {
     }
 
-    private void displayBanner() {
-        
-        System.out.println(""
-                + "\n*********************************************"
+    @Override
+    public String[] getInputs() {
+        String[] inputs = new String[1];
+
+        System.out.println(
+                "\n\n*********************************************"
                 + "\n*                                           *"
                 + "\n* This is the game of Curious Workmanship   *"
                 + "\n* In this game you will help Nephi build a  *"
-                + "\n* ship of curious workmanship to travel to  *"
+                + "\n* shiop of curious workmanship to travel to *"
                 + "\n* the promised land.                        *"
                 + "\n*                                           *"
                 + "\n* You and your family will need to first    *"
                 + "\n* plan for your trip determining and        *"
-                + "\n* estimating the amount of resources        *"
-                + "\n* needed for the trip. Then you will have   *"
-                + "\n* to go out and search for and harvest      *"
-                + "\n* the needed resources and deliver them     *"
-                + "\n* to the warehouse where they will store    *"
-                + "\n* them until the ship is completed. Then    *"
-                + "\n* you will also need to build a ship,       *"
-                + "\n* load the ship, and then set sail for      *"
+                + "\n*and estimating the amount of resources     *"
+                + "\n*needed for the trip. Then you will have    *"
+                + "\n*to go out and search for and harvest       *"
+                + "\n*the needed resources and deliver them      *"
+                + "\n*to the warehouse where you will store      *"
+                + "\n*then until the ship is completed. Then     *"
+                + "\n* You will also need to build the ship,     *"
+                + "\n* load the ship and then set sail for       *"
                 + "\n* the promised land. You will first need    *"
-                + "\n* to find the resources and manufacture     *"
-                + "\n* the tools needed to build the ship.       *"
+                + "\n* to find the resources and manufacture the *"
+                + "\n* tools need to build the ship.             *"
                 + "\n*                                           *"
-                + "\n* Good luck and have fun in this adventure  *"
+                + "\n* Good luck and have fun in this adventure. *"
                 + "\n*                                           *"
                 + "\n*********************************************"
-                );
-    }
-    /**
-     * displays the start program view
-     */
-
-    public void displayStartProgramView() {
-
-        boolean done = false; // set flag as not done;
-        do{
-            // prompt for and get players name
-            String playersName = this.getPlayersName();
-            if(playersName.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit game
-            
-            // do the requested action and display the next view
-            done = this.doAction(playersName);
-        } while (!done);
-    }
-
-    private String getPlayersName() {
-
-        Scanner keyboard = new Scanner(System.in); // get infile from keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
+        );
         
-        while(!valid){ // loop while an invalid value is entered
-            System.out.println("\n" + this.promptMessage);
-            
-            value = keyboard.nextLine(); // get next line typed on the keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-            
-            if(value.length() < 1){ // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-            break; // end the loop
-        }
-        return value; // return the value entered
-    }
-
-    private boolean doAction(String playersName) {
+        inputs[0] = this.getInput("Enter the playes name");
         
-        if(playersName.length() < 2){
-            System.out.println("\nInvalid players name: "
-                    + "The name must be greater than one character in length");
-            return false;
-        }
-    
-        // call createPlayer() control function
-        Player player = GameControl.createPlayer(playersName);
-        
-        if(player == null){ // if unsuccessful
-            System.out.println("\nError creating the player.");
-            return false;    
-        }
-        // display next view
-        this.displayNextView(player);
-        return true; // success!
-    }
-
-    private void displayNextView(Player player) {
-        // display a custom welcome messge
-        System.out.println  ("\n============================================="
-                            +"\n Welcome to the game " + player.getName()
-                            +"\n We hope you have a lot of fun!"
-                            +"\n============================================="
-                            );
-        // Create MainMenuView object
-        MainMenuView mainMenuView = new MainMenuView();
+        return inputs;
                 
-        // Display the main menu view
-        mainMenuView.display();
     }
+
+
+
+    @Override
+    public boolean doAction(String[] inputs) {
+        String playersName = inputs[0];
+        if (playersName.toUpperCase().equals("Q")) // user wants to quit
+        {
+            return true; // exit the game
+        }
+        // Create the player object and save it in the ProgramControl class
+        Player player = ProgramControl.createPlayer(playersName);
+
+        // Display a personalized welcome message
+        this.displayWelcomeMessage(player);
+
+        // Display the Main menu.
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.display();
+
+        return true;
+    }
+
+    public void displayWelcomeMessage(Player player) {
+        System.out.println("\n\n=============================================");
+        System.out.println("\tWelcome to the game " + player.getName());
+        System.out.println("\tWe hope you have a lot of fun!");
+        System.out.println("=============================================");
+
+    }
+
+
 }

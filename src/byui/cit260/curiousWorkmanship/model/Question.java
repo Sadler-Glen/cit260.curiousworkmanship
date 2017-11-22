@@ -5,20 +5,25 @@
  */
 package byui.cit260.curiousWorkmanship.model;
 
+
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
- * @author sadss
+ * @author jacksonrkj
  */
-public class Question implements Serializable{
+public class Question implements Serializable {
     
-    // class instance variables
     private String question;
     private String answer;
 
     public Question() {
+    }
+
+    
+    public Question(String question, String answer) {
+        this.question = question;
+        this.answer = answer;
     }
 
     public String getQuestion() {
@@ -37,38 +42,4 @@ public class Question implements Serializable{
         this.answer = answer;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.question);
-        hash = 89 * hash + Objects.hashCode(this.answer);
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "Question{" + "question=" + question + ", answer=" + answer + '}';
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Question other = (Question) obj;
-        if (!Objects.equals(this.question, other.question)) {
-            return false;
-        }
-        if (!Objects.equals(this.answer, other.answer)) {
-            return false;
-        }
-        return true;
-    }
-    
 }

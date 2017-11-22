@@ -7,11 +7,13 @@ package byui.cit260.curiousWorkmanship.view;
 
 /**
  *
- * @author sadss
+ * @author jacksonrkj
  */
 public interface ViewInterface {
     
     public void display();
-    public String getInput();
-    public boolean doAction(String value);    
+    public String[] getInputs();
+    public String getInput(String promptMessage);
+    public boolean doAction(String[] inputs);
+    
 }

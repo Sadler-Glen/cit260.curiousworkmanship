@@ -6,75 +6,99 @@
 package byui.cit260.curiousWorkmanship.view;
 
 import byui.cit260.curiousWorkmanship.control.GameControl;
-import java.util.Scanner;
-import byui.cit260.curiousWorkmanship.view.GameMenuView;
+import byui.cit260.curiousWorkmanship.control.ProgramControl;
 import curiousworkmanship.CuriousWorkmanship;
 
 /**
  *
- * @author sadss
+ * @author jacksonrkj
  */
 public class MainMenuView extends View {
 
-    public MainMenuView(){
-        super("\n----------------------------------------------"
-            + "\n| Main Menu                                  |"
-            + "\n----------------------------------------------"
-            + "\nN - Start new Game"
-            + "\nG - Get and start saved game"
-            + "\nH - Get help on how to play the game"
-            + "\nS - Save game"
-            + "\nQ - Quit"
-            + "\n----------------------------------------------"
-            ,"\nPlease enter your choice:");
-    }                            
+    public MainMenuView() { }
 
     @Override
-    public boolean doAction(String value) {
+    public String[] getInputs() {
+        String[] inputs = new String[1];
+
+        System.out.println(
+                  "\n"
+                + "\n-----------------------------------------"
+                + "\n| Main Menu                             |"
+                + "\n-----------------------------------------"
+                + "\nN - Start new game"
+                + "\nG - Get and start saved game"
+                + "\nH - Get help on how to play the game"
+                + "\nS - Save game"
+                + "\nQ - Quit"
+                + "\n-----------------------------------------"
+        );
         
-        value = value.toUpperCase(); // covert choice to upper case
+         inputs[0] = this.getInput("\nEnter a menu item");
         
-        switch (value){
-            case "N": // create and start a new game
+        return inputs;
+        
+    }
+
+    @Override
+    public boolean doAction(String[] inputs) {
+
+        String value = inputs[0].toUpperCase(); // convert to all upper case
+        char choice = value.charAt(0); // get first character entered
+
+        switch (choice) {
+            case 'N': // create and start a new game
                 this.startNewGame();
                 break;
-            case "G": // get and start an existing game
+            case 'G': // get and start an existing game
                 this.startExistingGame();
                 break;
-            case "H": // display the help menu
+            case 'H': // display the help menu
                 this.displayHelpMenu();
                 break;
-            case "S": // save the current game
+            case 'S': // save the current game
                 this.saveGame();
                 break;
+            case 'Q': // Exit the program
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
         }
+
         return false;
     }
 
     private void startNewGame() {
+
         // create a new game
-        GameControl.createNewGame(CuriousWorkmanship.getPlayer());
-        
+        int returnValue = GameControl.createNewGame(CuriousWorkmanship.getPlayer());
+        if (returnValue < 0) {
+            System.out.println("ERROR - Failed to create new game");
+        }
+
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 
     private void startExistingGame() {
-        System.out.println("\n*** startExistingGame() called ***");
+        // start a saved game
+        GameControl.startSavedGame();
+
+        // display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+    }
+
+    private void saveGame() {
+       System.out.println("*** saveGame() called");
     }
 
     private void displayHelpMenu() {
-        // display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
 
-    private void saveGame() {
-        System.out.println("\n*** saveGame() called ***");
-    }
+  
 }
-

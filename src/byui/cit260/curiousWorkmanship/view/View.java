@@ -5,69 +5,76 @@
  */
 package byui.cit260.curiousWorkmanship.view;
 
+
 import java.util.Scanner;
 
 /**
  *
- * @author sadss
+ * @author jacksonrkj
  */
 public abstract class View implements ViewInterface {
-    
-    protected String displayMessage;
-    protected String displayPrompt;
-    
-    public View(){
-    }
-    
-    public View(String message, String prompt){
-        this.displayMessage = message;
-        this.displayPrompt = prompt;
-        
-    }
-    
-    @Override
-    public void display(){  
 
-        boolean done = false; // set flag to not done
-        do{                
-            // prompt for and get menu option
-            String value = this.getInput();
-            if(value.toUpperCase().equals("Q"))// user wants to quit
-                return; // exit game
-            if(value.toUpperCase().equals("X"))// user wants to exit view                
-            // do the requested action and display the next view
-                return; // exit view
-            done = this.doAction(value);
-        
-        } while(!done);
+
+    public View() {
     }
     
     @Override
-    public String getInput() {
-        
+    public void display() {
+        String[] inputs = null;
+        boolean endOfView = false;
+
+        do {
+            inputs = this.getInputs(); // get the user's selection
+            if (  inputs == null
+               || inputs.length < 1
+               || inputs[0].toUpperCase().equals("Q")) {
+                return;
+            }
+            endOfView = this.doAction(inputs); // do action based on selection
+
+        } while (!endOfView);
+
+    }
+
+    @Override
+    public String getInput(String promptMessage) {
+
         Scanner keyboard = new Scanner(System.in);
-        boolean valid = false; // initialize to not valid
-        String value = null;
-        
-        // while a valid name has not beem retrieved
-        while(!valid) {
+        boolean valid = false;
+        String selection = null;
+
+        // while a valid name has not been retrieved
+        while (!valid) {
+            System.out.println(promptMessage);
             
-            // prompt for input
-            System.out.println(" " + this.displayMessage);
-            System.out.println(" " + this.displayPrompt);
-            
-            // get th value entered from keyboard
-            value = keyboard.nextLine();
-            // trim off leading and trailing blanks
-            value = value.trim(); 
-            
-            if(value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
+            // get the value entered from the keyboard
+            selection = keyboard.nextLine();
+            selection = selection.trim();
+
+            if (selection.length() < 1) { // blank value entered
+                System.out.println("\n*** You must enter a non-blank value");
                 continue;
             }
-            break; // end the loop
+
+            break;
         }
-        
-        return value; // return the value entered
+
+        return selection; // return the name        
     }
+
+    public void clearConsole() {
+        try {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows")) {
+                Runtime.getRuntime().exec("cls");
+            } else {
+                Runtime.getRuntime().exec("clear");
+            }
+        } catch (final Exception e) {
+            //  Handle any exceptions.
+        }
+
+    }
+
 }

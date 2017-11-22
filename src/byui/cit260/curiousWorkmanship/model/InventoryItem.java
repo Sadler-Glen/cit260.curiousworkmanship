@@ -5,66 +5,69 @@
  */
 package byui.cit260.curiousWorkmanship.model;
 
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
- * @author sadss
+ * @author jacksonrkj
  */
 public class InventoryItem implements Serializable {
     
-    // class instance variables
-    private String inventoryType;
-    private int quantityStock;
-    private int requiredamount;
+    private String description;
+    private double quantityInStock;
+    private double requiredAmount;
 
     public InventoryItem() {
     }
 
-    public String getInventoryType() {
-        return inventoryType;
+    public InventoryItem(String description, double quantityInStock, double requiredAmount) {
+        this.description = description;
+        this.quantityInStock = quantityInStock;
+        this.requiredAmount = requiredAmount;
     }
 
-    public void setInventoryType(String inventoryType) {
-        this.inventoryType = inventoryType;
+    public String getDescription() {
+        return description;
     }
 
-    public int getQuantityStock() {
-        return quantityStock;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setQuantityStock(int quantityStock) {
-        this.quantityStock = quantityStock;
+    public double getQuantityInStock() {
+        return quantityInStock;
     }
 
-    public int getRequiredamount() {
-        return requiredamount;
+    public void setQuantityInStock(double quantityInStock) {
+        this.quantityInStock = quantityInStock;
     }
 
-    public void setRequiredamount(int requiredamount) {
-        this.requiredamount = requiredamount;
+    public double getRequiredAmount() {
+        return requiredAmount;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.inventoryType);
-        hash = 59 * hash + this.quantityStock;
-        hash = 59 * hash + this.requiredamount;
-        return hash;
+    public void setRequiredAmount(double requiredAmount) {
+        this.requiredAmount = requiredAmount;
     }
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", quantityStock=" + quantityStock + ", requiredamount=" + requiredamount + '}';
+        return "InventoryItem{" + "description=" + description + ", quantityInStock=" + quantityInStock + ", requiredAmount=" + requiredAmount + '}';
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.description);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.quantityInStock) ^ (Double.doubleToLongBits(this.quantityInStock) >>> 32));
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.requiredAmount) ^ (Double.doubleToLongBits(this.requiredAmount) >>> 32));
+        return hash;
+    }
+
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -72,17 +75,15 @@ public class InventoryItem implements Serializable {
             return false;
         }
         final InventoryItem other = (InventoryItem) obj;
-        if (this.quantityStock != other.quantityStock) {
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (this.requiredamount != other.requiredamount) {
+        if (Double.doubleToLongBits(this.quantityInStock) != Double.doubleToLongBits(other.quantityInStock)) {
             return false;
         }
-        if (!Objects.equals(this.inventoryType, other.inventoryType)) {
+        if (Double.doubleToLongBits(this.requiredAmount) != Double.doubleToLongBits(other.requiredAmount)) {
             return false;
         }
         return true;
     }
-    
-    
 }

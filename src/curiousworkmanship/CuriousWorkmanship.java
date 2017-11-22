@@ -9,25 +9,59 @@ import byui.cit260.curiousWorkmanship.model.Game;
 import byui.cit260.curiousWorkmanship.model.Player;
 import byui.cit260.curiousWorkmanship.view.StartProgramView;
 
-/**
- *
- * @author sadss
- */
+
 public class CuriousWorkmanship {
     
     private static Game currentGame = null;
-    private static Player player = null;
+    private static Player player = null;   
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    
+    
+
+    public static void main(String[] args) { 
+    
+        while (true) { // play game until user explcitly quits
+            try {
+                // create StartProgramView and start the program
+                StartProgramView startProgramView = new StartProgramView();
+                startProgramView.display();
+                return;
+                
+            } catch (Exception e) {
+                
+                // build stacktrace string.
+                StringBuilder sb = new StringBuilder();
+                for (StackTraceElement element : e.getStackTrace()) {
+                    sb.append("\t" + element.toString());
+                    sb.append("\n");
+                }
+
+                System.out.println("\n"
+                        + "\n*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+                        + "\nAn abnormal error occured. ");
+
+                System.out.println("Exception: " + e.toString() + 
+                                   "\nCause: " + e.getCause() + 
+                                   "\nMessage: " + e.getMessage());
+
+                System.out.println("\n" + e.toString() + "\n" + sb);
+
+                System.out.println("\nRestarting the program."              
+                        + "\nIf this error persists, please contact support."
+                        + "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+                        + "\n\n\n");
+            }
+
+        }
         
-        //create StartProgramViewOrig and display the start program view
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.displayStartProgramView();
+        
     }
 
+    
+    
+    
+    
+    
     public static Game getCurrentGame() {
         return currentGame;
     }
@@ -43,5 +77,8 @@ public class CuriousWorkmanship {
     public static void setPlayer(Player player) {
         CuriousWorkmanship.player = player;
     }
+
+    
+    
     
 }

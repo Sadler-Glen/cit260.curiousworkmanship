@@ -5,56 +5,51 @@
  */
 package byui.cit260.curiousWorkmanship.model;
 
-import java.io.Serializable;
+import byui.cit260.curiousWorkmanship.enums.Item;
+import byui.cit260.curiousWorkmanship.enums.SceneGroup;
+import byui.cit260.curiousWorkmanship.enums.SceneType;
 
 /**
  *
- * @author sadss
+ * @author jacksonrkj
  */
-public class ResourceScene implements Serializable {
+public class ResourceScene extends Scene {
     
-    // class instance variables
-    private int amount;
-
-    public int getAmount() {
-        return amount;
-    }
+    private double amountOfResource;
+    private Item resourceType;
 
     public ResourceScene() {
     }
-    
-    public void setAmount(int amount) {
-        this.amount = amount;
+
+    public ResourceScene(SceneGroup sceneGroup, String description, 
+                         String mapSymbol, double travelTime, 
+                         boolean blocked, double amountOfResource,
+                         Item resourceType) {
+        super(sceneGroup, description, mapSymbol, travelTime, blocked);
+        this.amountOfResource = amountOfResource;
+        this.resourceType = resourceType;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.amount;
-        return hash;
+
+
+    public double getAmountOfResource() {
+        return amountOfResource;
     }
 
-    @Override
-    public String toString() {
-        return "ResourceScene{" + "amount=" + amount + '}';
+    public void setAmountOfResource(double amountOfResource) {
+        this.amountOfResource = amountOfResource;
     }
+
+    public Item getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Item resourceType) {
+        this.resourceType = resourceType;
+    }
+
+
+
     
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ResourceScene other = (ResourceScene) obj;
-        if (this.amount != other.amount) {
-            return false;
-        }
-        return true;
-    }
     
 }
