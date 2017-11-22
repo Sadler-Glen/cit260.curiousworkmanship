@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class Question implements Serializable {
     

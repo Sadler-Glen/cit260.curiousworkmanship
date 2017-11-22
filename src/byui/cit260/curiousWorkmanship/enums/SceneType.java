@@ -7,7 +7,7 @@ package byui.cit260.curiousWorkmanship.enums;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 
 public enum SceneType {

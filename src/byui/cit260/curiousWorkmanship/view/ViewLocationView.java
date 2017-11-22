@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class ViewLocationView extends View {
 

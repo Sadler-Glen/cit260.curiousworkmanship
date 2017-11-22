@@ -11,7 +11,7 @@ import java.awt.Point;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class MoveActorView extends View {
 

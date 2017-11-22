@@ -7,7 +7,7 @@ package byui.cit260.curiousWorkmanship.view;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public interface ViewInterface {
     

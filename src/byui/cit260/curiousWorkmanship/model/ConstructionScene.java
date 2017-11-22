@@ -11,7 +11,7 @@ import byui.cit260.curiousWorkmanship.enums.SceneType;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class ConstructionScene extends Scene {
     private InventoryItem[] requiredItems = new InventoryItem[5];

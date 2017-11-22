@@ -11,7 +11,7 @@ import byui.cit260.curiousWorkmanship.model.InventoryItem;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class InventoryControl {
 

@@ -11,7 +11,7 @@ import curiousworkmanship.CuriousWorkmanship;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class MainMenuView extends View {
 

@@ -7,7 +7,7 @@ package byui.cit260.curiousWorkmanship.enums;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public enum FoodItem {
     Grain("G", "Wheat, rice, and rye", 0.8334, 300, 48.18),

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class Location implements Serializable {
 

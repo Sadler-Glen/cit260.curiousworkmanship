@@ -8,7 +8,7 @@ package byui.cit260.curiousWorkmanship.control;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class Constants {
     

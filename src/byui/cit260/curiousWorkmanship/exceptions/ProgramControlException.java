@@ -7,7 +7,7 @@ package byui.cit260.curiousWorkmanship.exceptions;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class ProgramControlException extends Exception {
 

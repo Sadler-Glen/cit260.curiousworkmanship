@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author jacksonrkj
+ * @author sadss
  */
 public class MapControl {
    
